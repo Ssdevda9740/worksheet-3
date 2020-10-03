@@ -1,0 +1,159 @@
+1. In which of the following you can say that the model is overfitting?
+B) Low R-squared value for train-set and High R-squared value for test-set.
+
+2. Which among the following is a disadvantage of decision trees?
+B) Decision trees are highly prone to overfitting.
+
+3. Which of the following is an ensemble technique?
+C) Random Forest 
+
+4. Suppose you are building a classification model for detection of a fatal disease where detection of the disease is most important. In this case which of the following metrics you would focus on?
+C) Precision 
+
+5. The value of AUC (Area under Curve) value for ROC curve of model A is 0.70 and of model B is 0.85. Which of these two models is doing better job in classification?
+B) Model B
+
+6. Which of the following are the regularization technique in Linear Regression??
+A) Ridge  D) Lasso
+
+7. Which of the following is not an example of boosting technique?
+A) Adaboost
+C) Random Forest D) Xgboost.
+
+8. Which of the techniques are used for regularization of Decision Trees?
+B) L2 regularization
+
+9. Which of the following statements is true regarding the Adaboost technique?
+A) We initialize the probabilities of the distribution as 1/n, where n is the number of data-points
+B) A tree in the ensemble focuses more on the data points on which the previous tree was not performing well
+C) It is example of bagging technique
+D) None of the above
+
+
+10. Explain how does the adjusted R-squared penalize the presence of unnecessary predictors in the model?
+Meaning of Adjusted R2
+Both R2 and the adjusted R2 give you an idea of how many data points fall within the line of the regression equation. However, 
+there is one main difference between R2 and the adjusted R2: R2 assumes that every single variable explains the variation in the dependent variable. 
+The adjusted R2 tells you the percentage of variation explained by only the independent variables that actually affect the dependent variable.
+
+How Adjusted R2 Penalizes You
+The adjusted R2 will penalize you for adding independent variables (K in the equation) that do not fit the model. Why? In regression analysis, 
+it can be tempting to add more variables to the data as you think of them. Some of those variables will be significant, but you can’t be sure that significance 
+is just by chance. The adjusted R2 will compensate for this by that penalizing you for those extra variables.
+
+While values are usually positive, they can be negative as well. This could happen if your R2 is zero; After the adjustment, the value can dip below zero. 
+This usually indicates that your model is a poor fit for your data. Other problems with your model can also cause sub-zero values, such as not putting a 
+constant term in your model.
+
+11. Differentiate between Ridge and Lasso Regression.
+Linear regression (in scikit-learn) is the most basic form, where the model is not penalized for its choice of weights, at all. 
+That means, during the training stage, if the model feels like one particular feature is particularly important, the model may place a large weight to the feature. 
+This sometimes leads to overfitting in small datasets. Hence, following methods are invented.
+Lasso is a modification of linear regression, where the model is penalized for the sum of absolute values of the weights.
+ During training, the objective function become, Lasso introduced a new hyperparameter, alpha, the coefficient to penalize weights.
+Ridge takes a step further and penalizes the model for the sum of squared value of the weights. Thus, the weights not only tend to have smaller absolute
+ values and more evenly distributed, but also tend to be close to zeros.
+
+12. What is VIF? What is the suitable value of a VIF for a feature to be included in a regression modelling?
+A variance inflation factor(VIF) detects multicollinearity in regression analysis. Multicollinearity is when there’s correlation between predictors 
+(i.e. independent variables) in a model; it’s presence can adversely affect your regression results. The VIF estimates how much the variance of a regression 
+coefficient is inflated due to multicollinearity in the model.
+VIFs are usually calculated by software, as part of regression analysis. You’ll see a VIF column as part of the output. VIFs are calculated by taking a predictor, 
+and regressing it against every other predictor in the model. This gives you the R-squared values, which can then be plugged into the VIF formula. “i” is the
+ predictor you’re looking at (e.g. x1 or x2):
+variance inflation factor
+
+
+Interpreting the Variance Inflation Factor
+Variance inflation factors range from 1 upwards. The numerical value for VIF tells you (in decimal form) what percentage the variance (i.e. the standard error squared) is inflated for each coefficient. For example, a VIF of 1.9 tells you that the variance of a particular coefficient is 90% bigger than what you would expect if there was no multicollinearity — if there was no correlation with other predictors.
+A rule of thumb for interpreting the variance inflation factor:
+
+1 = not correlated.
+Between 1 and 5 = moderately correlated.
+Greater than 5 = highly correlated.
+Exactly how large a VIF has to be before it causes issues is a subject of debate. What is known is that the more your VIF increases, 
+the less reliable your regression results are going to be. In general, a VIF above 10 indicates high correlation and is cause for concern. 
+Some authors suggest a more conservative level of 2.5 or above.
+
+
+13. Why do we need to scale the data before feeding it to the train the model?
+Deep learning neural network models learn a mapping from input variables to an output variable.
+
+As such, the scale and distribution of the data drawn from the domain may be different for each variable.
+
+Input variables may have different units (e.g. feet, kilometers, and hours) that, in turn, may mean the variables have different scales.
+
+Differences in the scales across input variables may increase the difficulty of the problem being modeled. An example of this is that large input values
+ (e.g. a spread of hundreds or thousands of units) can result in a model that learns large weight values. 
+A model with large weight values is often unstable, meaning that it may suffer from poor performance during learning and sensitivity to input values resulting
+ in higher generalization error.
+
+One of the most common forms of pre-processing consists of a simple linear rescaling of the input variables.
+
+A target variable with a large spread of values, in turn, may result in large error gradient values causing weight values to change dramatically, 
+making the learning process unstable.
+
+Scaling input and output variables is a critical step in using neural network models.
+
+In practice it is nearly always advantageous to apply pre-processing transformations to the input data before it is presented to a network. 
+Similarly, the outputs of the network are often post-processed to give the required output values.
+
+Scaling Input Variables
+The input variables are those that the network takes on the input or visible layer in order to make a prediction.
+
+A good rule of thumb is that input variables should be small values, probably in the range of 0-1 or standardized with a zero mean and a standard deviation of one.
+
+Whether input variables require scaling depends on the specifics of your problem and of each variable.
+
+You may have a sequence of quantities as inputs, such as prices or temperatures.
+
+If the distribution of the quantity is normal, then it should be standardized, otherwise the data should be normalized. This applies 
+if the range of quantity values is large (10s, 100s, etc.) or small (0.01, 0.0001).
+
+If the quantity values are small (near 0-1) and the distribution is limited (e.g. standard deviation near 1) then perhaps you can get away with no scaling of the data.
+
+Problems can be complex and it may not be clear how to best scale input data.
+
+If in doubt, normalize the input sequence. If you have the resources, explore modeling with the raw data, standardized data, and normalized data and see if there is a beneficial difference in the performance of the resulting model.
+
+If the input variables are combined linearly, as in an MLP [Multilayer Perceptron], then it is rarely strictly necessary to standardize the inputs,
+ at least in theory. […] However, there are a variety of practical reasons why standardizing the inputs can make training faster and reduce the chances of 
+getting stuck in local optima.
+
+— Should I normalize/standardize/rescale the data? Neural Nets FAQ
+
+Scaling Output Variables
+The output variable is the variable predicted by the network.
+
+You must ensure that the scale of your output variable matches the scale of the activation function (transfer function) on the output layer of your network.
+
+If your output activation function has a range of [0,1], then obviously you must ensure that the target values lie within that range. But it is generally 
+better to choose an output activation function suited to the distribution of the targets than to force your data to conform to the output activation function.
+
+— Should I normalize/standardize/rescale the data? Neural Nets FAQ
+
+If your problem is a regression problem, then the output will be a real value.
+
+This is best modeled with a linear activation function. If the distribution of the value is normal, then you can standardize the output variable. 
+Otherwise, the output variable can be normalized.
+
+14. What are the different metrics which are used to check the goodness of fit in linear regression?
+
+A goodness-of-fit test, in general, refers to measuring how well do the observed data correspond to the fitted (assumed) model. 
+We will use this concept throughout the course as a way of checking the model fit. Like in a linear regression, in essence, the goodness-of-fit
+ test compares the observed values to the expected (fitted or predicted) values.
+
+A goodness-of-fit statistic tests the following hypothesis:
+
+H0: the model M0 fits
+vs.
+HA: the model M0 does not fit (or, some other model MA fits)
+
+Most often the observed data represent the fit of the saturated model, the most complex model possible with the given data. Thus, most often the alternative hypothesis (HA) will represent the saturated model MA which fits perfectly because each observation has a separate parameter.
+Later in the course we will see that MA could be a model other than the saturated one. Let us now consider the simplest example of the goodness-of-fit test with categorical data.
+
+In the setting for one-way tables, we measure how well an observed variable X corresponds to a Mult (n, π) model for some vector of cell probabilities, π. We will consider two cases:
+
+when vector π is known, and
+when vector π is unknown.
+In other words, we assume that under the null hypothesis data come from a Mult (n, π) distribution, and we test whether that model fits against the fit of the saturated model. The rationale behind any model fitting is the assumption that a complex mechanism of data generation may be represented by a simpler model. The goodness-of-fit test is applied to corroborate our assumption.
